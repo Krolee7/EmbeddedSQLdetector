@@ -6,7 +6,7 @@
 
         <style>
           body{
-              background: url('<?php $a = array('picture/thumb.jpg','picture/thumb3.jpg','picture/thumb4.jpg','picture/thumb5.jpg'); echo $a[array_rand($a)];?>');
+              background: url('<?php $a = array('picture/thumb3.jpg'); echo $a[array_rand($a)];?>');
               font-family: Verdana, serif;
               
           }
@@ -17,7 +17,7 @@
 <body>
 
 <div class="container-fluid">
-<nav class="navbar navbar-expand-lg navbar-light bg-blue">
+<nav class="navbar navbar-expand-lg navbar-white bg-white">
   <div class="container-fluid">
   
     </button>
@@ -39,7 +39,7 @@
             <li><a class="dropdown-item" href="Searchbox/index.php">Test 2</a></li>
           </ul>
           <li class="nav-item">
-          <a class="nav-link text-light" href="analysis.php">Analysis</a>
+          <a class="nav-link text-light" href="chart.php">Analysis</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="future.php">Future Work</a>
@@ -61,6 +61,37 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Non SQL injection',     2],
+          ['SQL injection',     11],
+          
+        ]);
+
+        var options = {
+          title: 'Malware Activities Analysis'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
 
 
 

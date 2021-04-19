@@ -6,7 +6,7 @@
 
         <style>
     body{
-        background: url('<?php $a = array('picture/thumb.jpg','picture/thumb3.jpg','picture/thumb4.jpg','picture/thumb5.jpg'); echo $a[array_rand($a)];?>');
+        background: url('<?php $a = array('picture/thumb3.jpg'); echo $a[array_rand($a)];?>');
         font-family: Verdana, serif;
         
     }
@@ -16,29 +16,25 @@
 <body>
 
 <div class="container-fluid">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-white bg-white">
   <div class="container-fluid">
-  
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="homepage.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="abstract.php">Abstract</a>
         </li>
-       
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Testing phase
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="login.php">Test 1</a></li>
-            <li><a class="dropdown-item" href="Searchbox/index.php">Test 2</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="login.php">Testing phase</a>
+        </li>
           <li class="nav-item">
-          <a class="nav-link" href="analysis.php">Analysis</a>
+          <a class="nav-link" href="chart.php">Analysis</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="future.php">Future Work</a>
@@ -52,10 +48,13 @@
 
 <br><br><br><br>
 <div class="row justify-content-center">
-    <div class="col-md-4">
-        <h1 class="row justify-content-center" style="color:yellow;"> Future Work </h1>
-    
-        <p1 element style="color:white;">Build one detection tool that can scan all the logfiles from the web requests and if have any suspicious request, this tool can block the IP address of user by using remote control </element> </p1>
+    <div class="col-md-4 justify-content-center">
+        <h1 class="row justify-content-center" style="color:yellow;"> Future Work</h1>
+        <br><br>
+        <div class="container text-white">
+        <p style="text-align:justify">Build an application tool that can scan all the logfiles from the web requests and if have any suspicious request, this tool can block the IP address of user by using remote control</p>
+        </div>
+       
     </div>
 </div>
 
@@ -67,3 +66,5 @@
 
 </body>
 </html>
+
+

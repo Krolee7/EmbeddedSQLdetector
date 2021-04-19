@@ -73,6 +73,8 @@ session_start();
 
     </style>
 
+    <br><br><br><br>
+
     <div id="box">
 
         <form method="post">

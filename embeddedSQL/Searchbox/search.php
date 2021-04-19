@@ -1,25 +1,24 @@
+<?php
+// (A) DATABASE CONFIG - CHANGE TO YOUR OWN!
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'test');
+define('DB_CHARSET', 'utf8');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
 
-<?php
-	if(ISSET($_POST['search'])){
-		$keyword = $_POST['keyword'];
-?>
-<div>
-	<h2>Result</h2>
-	<hr style="border-top:2px dotted #ccc;"/>
-	<?php
-		require 'conn.php';
-		$query = mysqli_query($conn, "SELECT * FROM `blog` WHERE `title` LIKE '%$keyword%' ORDER BY `title`") or die(mysqli_error());
-		while($fetch = mysqli_fetch_array($query)){
-	?>
-	<div style="word-wrap:break-word;">
-		<a href="get_blog.php?id=<?php echo $fetch['blog_id']?>"><h4><?php echo $fetch['title']?></h4></a>
-		<p><?php echo substr($fetch['content'], 0, 100)?>...</p>
-	</div>
-	<hr style="border-bottom:1px solid #ccc;"/>
-	<?php
-		}
-	?>
-</div>
-<?php
-	}
-?>
+// (B) CONNECT TO DATABASE
+try {
+  $pdo = new PDO(
+    "mysql:host=".DB_HOST.";charset=".DB_CHARSET.";dbname=".DB_NAME,
+    DB_USER, DB_PASSWORD, [
+       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]
+  );
+} catch (Exception $ex) { exit($ex->getMessage()); }
+
+// (C) SEARCH
+$stmt = $pdo->prepare("SELECT * FROM `users` WHERE `name` LIKE ? OR `email` LIKE ?");
+$stmt->execute(["%".$_POST['search']."%", "%".$_POST['search']."%"]);
+$results = $stmt->fetchAll();
+if (isset($_POST['ajax'])) { echo json_encode($results); }

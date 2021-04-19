@@ -6,7 +6,7 @@
 
         <style>
           body{
-              background: url('<?php $a = array('picture/thumb.jpg','picture/thumb3.jpg','picture/thumb4.jpg','picture/thumb5.jpg'); echo $a[array_rand($a)];?>');
+              background: url('<?php $a = array('picture/thumb3.jpg'); echo $a[array_rand($a)];?>');
               font-family: Verdana, serif;
               
           }
@@ -21,32 +21,28 @@
 <body>
 
 <div class="container-fluid">
-<nav class="navbar navbar-expand-lg navbar-light bg-blue">
+<nav class="navbar navbar-expand-lg navbar-white bg-white">
   <div class="container-fluid">
-  
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse text-primary" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active text-light" aria-current="page" href="homepage.php">Home</a>
+          <a class="nav-link active" aria-current="page" href="homepage.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="abstract.php">Abstract</a>
+          <a class="nav-link" href="abstract.php">Abstract</a>
         </li>
-       
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light"  href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-          Testing phase
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="login.php">Test 1</a></li>
-            <li><a class="dropdown-item" href="Searchbox/index.php">Test 2</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="login.php">Testing phase</a>
+        </li>
           <li class="nav-item">
-          <a class="nav-link text-light" href="analysis.php">Analysis</a>
+          <a class="nav-link" href="chart.php">Analysis</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="future.php">Future Work</a>
+          <a class="nav-link" href="future.php">Future Work</a>
         </li>
         </li>
       </ul>
@@ -55,19 +51,23 @@
 </nav>
 </div>
 
+<br><br>
 <div class="row justify-content-center">
-    <div class="col-md-4">
+    <div class="col-md-4 justify-content-center">
         <h1 class="row justify-content-center" style="color:yellow;"> Abstract</h1>
-    
-        <p1 element style="color:white;">Lack of secure codes implemented in the web apps is a vulnerability that will lead to cyber-attack. Statistic shows highest record of the cyber-attack are by using SQL injection technique.
+        <div class="container text-white">
+        <p style="text-align:justify">Lack of secure codes implemented in the web apps is a vulnerability that will lead to cyber-attack. Statistic shows highest record of the cyber-attack are by using SQL injection technique.
          Hence, an effective embedded SQL injection detector into web system is essential to counter this threat. This research focuses on the detection by comparing the text that user put in the parameter of web system with signature based inside the detector. 
-         This negative selection technique research relies on the signature-based detection. The dataset used is divided into two parts. First, the testing dataset it used to evaluate the performance of the detector. Second, the results of the evaluation indicated that the proposed technique has the ability to detect malicious and benign web requests with high accuracy. The aim at the end of this project is to evaluate the performance of classifier. </element> </p1>
+         This n-gram sequence relies on the signature-based detection. The dataset used is divided into two parts. First, the SQL detector will be embedded on the login page because the login  is a door that users must open in order to get the best out of their user experience with a website.
+         Second, the results of the evaluation indicated that the proposed technique has the ability to detect malicious and benign web requests with high accuracy. The aim at the end of this project is to evaluate the number of SQL injection input that has been detected by embedded SQL detector.</p>
+        </div>
+      
     </div>
 </div>
-<br><br><br><br>
+<br>
 <div class="d-grid gap-10 col-2 mx-auto">
 
-  <button class="btn btn-primary" type="button" >Start</button>
+<a class="btn btn-primary" href="login.php" role="button">Start</a>
   
 </div>
 

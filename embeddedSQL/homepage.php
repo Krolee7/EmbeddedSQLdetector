@@ -6,8 +6,8 @@
 
         <style>
     body{
-        background: url('<?php $a = array('picture/thumb.jpg','picture/thumb3.jpg','picture/thumb5.jpg'); echo $a[array_rand($a)];?>');
-        font-family: Arial, Helvetica, sans-serif;
+        background: url('<?php $a = array('picture/thumb3.jpg'); echo $a[array_rand($a)];?>');
+        font-family: Verdana, serif;
 
     }
     </style>
@@ -25,22 +25,15 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="homepage.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="abstract.php">Abstract</a>
         </li>
-       
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Testing phase
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="login.php">Test 1</a></li>
-            <li><a class="dropdown-item" href="Searchbox/index.php">Test 2</a></li>
-          </ul>
-          <li class="nav-item">
-          <a class="nav-link" href="analysis.php">Analysis</a>
+        <li class="nav-item">
+          <a class="nav-link" href="login.php">Testing phase</a>
+        </li>
+          <a class="nav-link" href="chart.php">Analysis</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="future.php">Future Work</a>
@@ -55,7 +48,9 @@
 <div class="row justify-content-center">
     <div class="col-md-6">
     <br><br><br><br><br><br><br><br><br><br><br><br>
-        <h1 class="row justify-content-center" style="color:white;"> An Embedded SQL Injection detector </h1>
+          <center>
+        <h1 class="row justify-content-center" style="color:yellow;"> An Embedded SQL Injection detector for real time detection by using N-gram Sequence </h1>
+        </center>
     </div>
 </div>
 

@@ -1,78 +1,84 @@
+
+<?php
+$localhost = "localhost";
+$username = "root";
+$password = "";
+$dbname = "login_sample_db";
+$con = new mysqli($localhost, $username, $password, $dbname);
+if( $con->connect_error){
+    die('Error: ' . $con->connect_error);
+}
+$sql = "SELECT * FROM blog";
+
+$myfile = fopen("../sql.txt", "r") or die("Unable to open file!");
+$filetest = fread($myfile,filesize("../sql.txt"));
+
+if( isset($_GET['search']) ){
+	
+	$title = $_GET['search'];
+	
+	if($title == (null || "")){
+		$sql = "SELECT * FROM blog";
+	}
+	else if (strpos($filetest, $title) !== false) {
+		header("Location:errorpage.php");
+		fclose($myfile);
+	}else{
+		$sql = "SELECT * FROM blog WHERE blog_title ='$title'";
+	}
+   
+}
+$result = $con->query($sql);
+?>
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" name="viewport" content="width=device-width"/>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-	</head>
+<html>
+<head>
+<title>Basic Search form using mysqli</title>
+<link rel="stylesheet" type="text/css"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
 <body>
+<div class="container">
+<label>Search</label>
+<form action="" method="GET">
+<input type="text" placeholder="Type the name here" name="search">&nbsp;
+<input type="submit" value="Search" name="btn" class="btn btn-sm btn-primary">
+</form>
+<h2>List of students</h2>
+<table class="table table-striped table-responsive">
+<tr>
+<th>ID</th>
+<th>Title</th>
+</tr>
+<?php
+while($row = $result->fetch_assoc()){
+    ?>
+    <tr>
+    <td><?php echo $row['blog_id']; ?></td>
+    <td><?php echo $row['blog_title']; ?></td>
+    </tr>
+    <?php
+}
+?>
 
-	
 
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-		<h1> Welcome to 2nd Test! </h1>
-		<p1> In the 2nd test, the search parameter has been enhanced by adding n-gram to signature based from previous page. </p1>
-		</div>
-	</nav>
-	<div class="col-md-3"></div>
-	<div class="col-md-6 well">
-		<h3 class="text-primary">Search Box</h3>
-		<hr style="border-top:1px dotted #ccc;"/>
-		<div class="col-md-1"></div>
-		<div class="col-md-10">
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#form_modal">Add Content</button>
-			<br />
-			<br />
-			<form class="form-inline" method="POST" action="index.php">
-				<div class="input-group col-md-12">
-					<input type="text" class="form-control" placeholder="Search here..." name="keyword" required="required"/>
-					<span class="input-group-btn">
-						<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search"></span></button>
-					</span>
-				</div>
-			</form>
-			<br />
-			<?php include 'search.php'?>
-		</div>
-	</div>
-	<div class="modal fade" id="form_modal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<form action="save_content.php" method="POST" enctype="multipart/form-data">
-				<div class="modal-content">
-					<div class="modal-body">
-						<div class="col-md-2"></div>
-						<div class="col-md-8">
-							<div class="form-group">
-								<label>Title</label>
-								<input type="text" class="form-control" name="title" required="required"/>
-							</div>
-							<div class="form-group">
-								<label>Content</label>
-								<textarea class="form-control" style="resize:none; height:250px;" name="content" required="required"></textarea>
-							</div>
-						</div>
-					</div>
-					<div style="clear:both;"></div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
-						<button name="save" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Save</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-	
-	<a href="homepage.php">Homepage</a>
-	<br><br>
-	<a href="analysis.php">Analysis</a>
-	<br><br>
-	<a href="homepage.php">Future Work</a>
-	<br><br>
-	<a href="homepage.php">Logout</a>
-	<br><br>
+</table>
+</div>
+<br><br><br><br>
 
-	
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<center>
+<!-- <div class="d-grid gap-6 col-2 mx-auto"> -->
+
+<div class="d-flex justify-content-center">
+	<a  style="margin-right: 10px" class="btn btn-primary" href="../login.php" role="button">Logout</a>
+	<a class="btn btn-primary" href="../chart.php" role="button">Analysis</a>
+</div>
+<br><br>
+</center>
+
+</div>
+<!-- <div class="col"><a class="btn btn-primary form-control" href="../login.php" role="button">Logout</a></div>
+		<div class="col"><a class="btn btn-primary form-control" href="../chart.php" role="button">Analysis</a></div> -->
+
 </body>
 </html>
